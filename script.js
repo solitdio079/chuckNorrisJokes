@@ -7,10 +7,14 @@ function getJoke() {
     xhr.open('GET', 'https://api.chucknorris.io/jokes/random')
 
     xhr.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
+        if (this.readyState === 4) {
             //console.log(JSON.parse(this.responseText))
-            const data = JSON.parse(this.responseText)
-            joke.innerHTML = data.value;
+            if (this.status === 200) {
+                const data = JSON.parse(this.responseText)
+                joke.innerHTML = data.value
+            } else {
+                joke.innerHTML = "Something went wrong!"
+            }
         }
     }
     xhr.send();
