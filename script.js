@@ -15,4 +15,5 @@ function getJoke() {
     }
     xhr.send();
 }
+getJoke()
 jokeBtn.addEventListener('click', getJoke)
